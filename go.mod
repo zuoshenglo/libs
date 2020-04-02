@@ -1,4 +1,4 @@
-module libs
+module github.com/zuoshenglo/libs
 
 go 1.13
 
