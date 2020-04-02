@@ -20,38 +20,43 @@ func init() {
 			logrus.FieldKeyFunc:  "caller",
 		},
 	}
+}
 
-	var requestLog = NewFormatLog()
-	requestLog.RandomString = tools.GetRandomString(10)
-	requestLog.OutPutTime = time.Now()
-	Log.WithFields(logrus.Fields{
-		"type": "pa_access",
-		"msg":  requestLog,
-	}).Info("common-info")
+func logFormat() *FormatLog {
+	var logFormat = NewFormatLog()
+	logFormat.RandomString = tools.GetRandomString(10)
+	logFormat.OutPutTime = time.Now()
+	return logFormat
 }
 
 func Info(args ...interface{}) {
-	var formatLog = NewFormatLog()
-	formatLog.RandomString = tools.GetRandomString(10)
-	formatLog.OutPutTime = time.Now()
+	logFormat := logFormat()
 	Log.WithFields(logrus.Fields{
 		"type": "pa_access",
-		"msg":  formatLog,
-	}).Info("common-info")
-	Log.Info(args...)
+		"msg":  logFormat,
+	}).Info(args...)
 }
 
 func Debug(args ...interface{}) {
-	Log.Debug(args...)
+	logFormat := logFormat()
+	Log.WithFields(logrus.Fields{
+		"type": "pa_access",
+		"msg":  logFormat,
+	}).Debug(args...)
 }
 
 func Warn(args ...interface{}) {
-	Log.Warn(args...)
+	logFormat := logFormat()
+	Log.WithFields(logrus.Fields{
+		"type": "pa_access",
+		"msg":  logFormat,
+	}).Warn(args...)
 }
 
 func Error(args ...interface{}) {
-	Log.Error(args...)
-}
-
-func Test1111111(args ...interface{})  {
+	logFormat := logFormat()
+	Log.WithFields(logrus.Fields{
+		"type": "pa_access",
+		"msg":  logFormat,
+	}).Error(args...)
 }
