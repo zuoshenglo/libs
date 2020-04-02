@@ -11,7 +11,7 @@ var Log = logrus.New()
 
 func init() {
 	Log.Out = os.Stdout
-	Log.SetReportCaller(true)
+	//Log.SetReportCaller(true)
 	Log.Formatter = &logrus.JSONFormatter{
 		FieldMap: logrus.FieldMap{
 			logrus.FieldKeyTime:  "date",
