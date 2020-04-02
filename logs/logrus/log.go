@@ -54,5 +54,4 @@ func Error(args ...interface{}) {
 }
 
 func Test1111111(args ...interface{})  {
-
 }
