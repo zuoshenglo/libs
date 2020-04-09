@@ -60,3 +60,12 @@ func Error(args ...interface{}) {
 		"msg":  logFormat,
 	}).Error(args...)
 }
+
+func WithFields(fields logrus.Fields) {
+	logFormat := logFormat()
+	Log.WithFields(logrus.Fields{
+		"type":     "pa_access",
+		"msg":      logFormat,
+		"test-msg": fields,
+	}).Info("this is a test")
+}
