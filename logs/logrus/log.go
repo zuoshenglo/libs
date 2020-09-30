@@ -61,6 +61,14 @@ func Error(args ...interface{}) {
 	}).Error(args...)
 }
 
+func Fatalf(args ...interface{}) {
+	logFormat := logFormat()
+	Log.WithFields(logrus.Fields{
+		"type": "pa_access",
+		"msg":  logFormat,
+	}).Fatal(args...)
+}
+
 func WithFields(fields logrus.Fields) {
 	logFormat := logFormat()
 	Log.WithFields(logrus.Fields{
